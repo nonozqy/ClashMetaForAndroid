@@ -12,6 +12,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup submodule branches
+        run: |
+          git submodule foreach '
+            git fetch --depth=1 origin HEAD 2>/dev/null || true
+            git branch -r 2>/dev/null | head -5 || true
+          '
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
