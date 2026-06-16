@@ -50,11 +50,11 @@ jobs:
       - name: Download geo files
         run: ./gradlew downloadGeoFiles
 
-      - name: Build meta debug APK
-        run: ./gradlew assembleMetaDebug
+      - name: Build meta release APK
+        run: ./gradlew assembleMeta
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: cmfa-meta-debug
-          path: app/build/outputs/apk/meta/debug/*.apk
+          name: cmfa-meta-release
+          path: app/build/outputs/apk/meta/release/*.apk
