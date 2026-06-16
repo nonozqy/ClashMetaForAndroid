@@ -49,6 +49,19 @@ class MainDesign(context: Context) : Design<MainDesign.Request>(context) {
         }
     }
 
+    suspend fun setTrafficBreakdown(total: Long, proxy: Long, direct: Long) {
+        withContext(Dispatchers.Main) {
+            val totalStr = total.trafficTotal()
+            val proxyStr = proxy.trafficTotal()
+            val directStr = direct.trafficTotal()
+            val breakdown = context.getString(
+                R.string.format_traffic_breakdown,
+                totalStr, proxyStr, directStr
+            )
+            binding.forwarded = breakdown
+        }
+    }
+
     suspend fun setMode(mode: TunnelState.Mode) {
         withContext(Dispatchers.Main) {
             binding.mode = when (mode) {

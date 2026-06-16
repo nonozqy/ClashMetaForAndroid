@@ -37,6 +37,22 @@ func queryTotal(upload, download *C.uint64_t) {
 	*download = C.uint64_t(down)
 }
 
+//export queryProxyTotal
+func queryProxyTotal(upload, download *C.uint64_t) {
+	up, down := tunnel.ProxyTotal()
+
+	*upload = C.uint64_t(up)
+	*download = C.uint64_t(down)
+}
+
+//export queryDirectTotal
+func queryDirectTotal(upload, download *C.uint64_t) {
+	up, down := tunnel.DirectTotal()
+
+	*upload = C.uint64_t(up)
+	*download = C.uint64_t(down)
+}
+
 //export queryGroupNames
 func queryGroupNames(excludeNotSelectable C.int) *C.char {
 	return marshalJson(tunnel.QueryProxyGroupNames(excludeNotSelectable != 0))

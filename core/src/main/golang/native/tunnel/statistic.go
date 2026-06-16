@@ -15,3 +15,11 @@ func Now() (up int64, down int64) {
 func Total() (up int64, down int64) {
 	return statistic.DefaultManager.Total()
 }
+
+func ProxyTotal() (up int64, down int64) {
+	return statistic.DefaultManager.ProxyTotal()
+}
+
+func DirectTotal() (up int64, down int64) {
+	return statistic.DefaultManager.DirectTotal()
+}

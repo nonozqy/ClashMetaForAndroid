@@ -50,6 +50,14 @@ object Clash {
         return Bridge.nativeQueryTrafficTotal()
     }
 
+    fun queryTrafficProxy(): Traffic {
+        return Bridge.nativeQueryTrafficProxy()
+    }
+
+    fun queryTrafficDirect(): Traffic {
+        return Bridge.nativeQueryTrafficDirect()
+    }
+
     fun notifyDnsChanged(dns: List<String>) {
         Bridge.nativeNotifyDnsChanged(dns.toSet().joinToString(separator = ","))
     }
